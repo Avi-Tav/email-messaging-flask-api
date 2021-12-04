@@ -52,6 +52,12 @@ def token_required(f):
 
     return decorated
 
+@app.route('/', methods=['GET'])
+def home():
+    response = '''<h1>Hi, Welcome To Avi's Site</h1>
+    <br> <h3>The methods are:</h3> <br> 1. url/user, method - post - for creating a user <br> 2. url/login, method - get- to login <br> 3. url/user/address, method - put - for promoting a user to admin user. <br>4. url/user/address, method - delete - for deleting a user. <br> 5. url/user/address, method - get - for getting info for specific user. Only Admin can do it. <br> 6. url/user, method - get - to get all users in the system. Only Admin can do it. <br> 7. url/create_email, method - post - sending an email to another user in the system. <br> 8. url/get_all_emails, method - get - Receive all emails for the user using his jwt. <br> 9. url/get_all_unread_emails - method - get - Receive all unread eamils. <br> 10. url/email/email_id - method - put - for reading an unread email. <br> 11. url/email/email_id - method - delete - delete a specific email.'''    
+    return response
+
 @app.route('/user', methods=['GET'])
 @token_required
 def get_all_users(current_user):
